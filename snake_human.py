@@ -2,7 +2,7 @@ import pygame
 import random
 from collections import namedtuple
 from pygame.locals import K_RIGHT,K_LEFT,K_UP,K_DOWN,QUIT
-import snake_env
+
 
 Position = namedtuple('Point', 'x, y')
 
