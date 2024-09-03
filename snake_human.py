@@ -2,6 +2,7 @@ import pygame
 import random
 from collections import namedtuple
 from pygame.locals import K_RIGHT,K_LEFT,K_UP,K_DOWN,QUIT
+import snake_env
 
 Position = namedtuple('Point', 'x, y')
 
@@ -19,7 +20,7 @@ class Snake:
         self.blocks.append(Position(19,15))
         self.block_size = block_size
         self.current_direction = Direction.right
-        self.image = pygame.image.load('snake.png')
+        self.image = pygame.image.load('./snake.png')
     
     def move(self):
         if (self.current_direction == Direction.right):
@@ -62,7 +63,7 @@ class Berry:
 
     def __init__(self,block_size):
         self.block_size = block_size
-        self.image = pygame.image.load('berry.png')
+        self.image = pygame.image.load('./berry.png')
         self.position = Position(1, 1)     
 
     def draw(self,surface):
@@ -76,8 +77,8 @@ class Wall:
 
     def __init__(self,block_size):
         self.block_size = block_size
-        self.map = self.load_map('map.txt')
-        self.image = pygame.image.load('wall.png')
+        self.map = self.load_map('./map.txt')
+        self.image = pygame.image.load('./wall.png')
 
     def load_map(self,fileName):
         with open(fileName,'r') as map_file:
@@ -107,7 +108,7 @@ class Game:
         self.frame = 0
         self.running = True
         self.Clock = pygame.time.Clock()
-        self.fps = 1
+        self.fps = 10
         self.font = pygame.font.Font(None, 32)
         self.snake = Snake(self.block_size)
         self.berry = Berry(self.block_size)
